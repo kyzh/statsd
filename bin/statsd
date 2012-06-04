@@ -27,6 +27,9 @@ begin
     opts.on("-g", "--graphite", "Flush stats to Graphite") do 
      options[:graphite] = true
     end
+    opts.on("-pPID", "--pid-file PID", "pid file") do |p|
+      options[:pid] = p
+    end
 
     opts.on("-h", "--help", "Show this message") do
       puts opts
