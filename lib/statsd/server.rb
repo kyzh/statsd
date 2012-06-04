@@ -67,7 +67,13 @@ module Statsd
         if options[:graphite]
           require 'statsd/graphite' 
         end
-      
+
+        if options[:pid]
+          File.open(options[:pid],"w") do|file|
+            file.print Process.pid
+          end
+        end     
+ 
         # Start the server
         EventMachine::run do
           EventMachine::open_datagram_socket(config['bind'], config['port'], Statsd::Server)  
